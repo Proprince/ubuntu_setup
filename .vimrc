@@ -1,39 +1,4 @@
-"""""""""""""""""""""""""Vundle"""""""""""""""""""""""""
-"去掉vi的一致性"
-set nocompatible
-
-"Vundle Section"
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-" Plugin 'my plugins'
-" Python
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
-Plugin 'tell-k/vim-autopep8'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/nerdcommenter'
-
-
-call vundle#end()
-filetype plugin indent on
-"filetype plugin on
-
-" 简要帮助文档
-" :PluginList       - 列出所有已配置的插件
-" :PluginInstall    - 安装插件，追加 `!` 用以更新或使用 :PluginUpdate
-" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
-" :PluginClean      - 清除未使用插件，需要确认；追加 `!` 自动批准移除未使用插件
-"
-" 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
-" 将你自己的非插件片段放在这行之后
-"""""""""""""""""""""""""Vundle"""""""""""""""""""""""""
-
-" file encoding
+"""""""""""""""""" file encoding """"""""""""""""""
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1,gbk,gb18030,gk2312
 if has("win32")
@@ -46,65 +11,133 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " 解决 console 提示信息输出乱码
 language messages zh_CN.utf-8
+"""""""""""""""""" file encoding """"""""""""""""""
 
+"""""""" tab key """"""""
+set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
+ 
+set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
+ 
+set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
+                    " Spaces are used in indents with the '>' and '<' commands
+                    " and when 'autoindent' is on. To insert a real tab when
+                    " 'expandtab' is on, use CTRL-V <Tab>.
+ 
+set smarttab        " When on, a <Tab> in front of a line inserts blanks
+                    " according to 'shiftwidth'. 'tabstop' is used in other
+                    " places. A <BS> will delete a 'shiftwidth' worth of space
+                    " at the start of the line.
 
-"显示行号"
-set number
-" 隐藏滚动条"    
-set guioptions-=TrLm 
-"隐藏顶部标签栏"
-set showtabline=0
-"设置字体"
-set guifont=Consolas:h14
-syntax on   "开启语法高亮"
+set autoindent      " Copy indent from current line when starting a new line
+                    " (typing <CR> in Insert mode or when using the "o" or "O"
+                    " command).
+"""""""" tab key """"""""
+ 
+set showcmd         " Show (partial) command in status line.
 
-" 配色
+set number          " Show line numbers.
+
+set showmatch       " When a bracket is inserted, briefly jump to the matching
+                    " one. The jump is only done if the match can be seen on the
+                    " screen. The time to show the match can be set with
+                    " 'matchtime'.
+ 
+set hlsearch        " When there is a previous search pattern, highlight all
+                    " its matches.
+ 
+set incsearch       " While typing a search command, show immediately where the
+                    " so far typed pattern matches.
+ 
+set ignorecase      " Ignore case in search patterns.
+ 
+set smartcase       " Override the 'ignorecase' option if the search pattern
+                    " contains upper case characters.
+ 
+set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
+                    " and CTRL-U in Insert mode. This is a list of items,
+                    " separated by commas. Each item allows a way to backspace
+                    " over something.
+ 
+set textwidth=79    " Maximum width of text that is being inserted. A longer
+                    " line will be broken after white space to get this width.
+ 
+set formatoptions=c,q,r,t " This is a sequence of letters which describes how
+                    " automatic formatting is to be done.
+                    "
+                    " letter    meaning when present in 'formatoptions'
+                    " ------    ---------------------------------------
+                    " c         Auto-wrap comments using textwidth, inserting
+                    "           the current comment leader automatically.
+                    " q         Allow formatting of comments with "gq".
+                    " r         Automatically insert the current comment leader
+                    "           after hitting <Enter> in Insert mode. 
+                    " t         Auto-wrap text using textwidth (does not apply
+                    "           to comments)
+ 
+set ruler           " Show the line and column number of the cursor position,
+                    " separated by a comma.
+
+set mouse=a         " Enable the use of the mouse.
+ 
+filetype plugin indent on
+syntax on
+
+"""""""" 配色 """"""""
 set t_Co=256
-set background=dark     "设置背景色"
-colorscheme jellybeans
-" 浅色高亮
-"set cursorline
-" set cursorcolumn
+set background=dark " When set to "dark", Vim will try to use colors that look
+                    " good on a dark background. When set to "light", Vim will
+                    " try to use colors that look good on a light background.
+                    " Any other value is illegal.
+colorscheme jellybeans " downlaod <color>.vim in ~/.vim/colors/
+"""""""" 配色 """"""""
 
-set nowrap  "设置不折行"
-set fileformat=unix "设置以unix的格式保存文件"
-set cindent     "设置C样式的缩进格式"
+""""""""""""""""""""" Vundle Setting """""""""""""""""""""""""
+set nocompatible              " required
+filetype off                  " required
 
-" tab 键设置
-set softtabstop=4
-set tabstop=4   "设置table长度"
-set shiftwidth=4        "同上"
-set expandtab
+set rtp+=~/.vim/bundle/Vundle.vim
 
-set showmatch   "显示匹配的括号"
-set scrolloff=5     "距离顶部和底部5行"
-set laststatus=2    "命令行为两行"
-set backspace=2
-set mouse=a     "启用鼠标"
-set selection=exclusive
-set selectmode=mouse,key
-set matchtime=5
-set ignorecase      "忽略大小写"
-set incsearch
-set hlsearch        "高亮搜索项"
-set noexpandtab     "不允许扩展table"
-set whichwrap+=<,>,h,l
-set autoread
+call vundle#begin()
 
-"按F5运行python"
-map <F5> :Autopep8<CR> :w<CR> :call RunPython()<CR>
+Plugin 'gmarik/Vundle.vim'              " vundle project
+Plugin 'Valloric/YouCompleteMe'         " auto complete
+Plugin 'tell-k/vim-autopep8'            " python autopep
+Plugin 'jiangmiao/auto-pairs'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+
+" YouCompleteMe setting required
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件，追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件，需要确认；追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和 wiki 以及 FAQ
+" 将你自己的非插件片段放在这行之后
+""""""""""""""""""""" Vundle Setting """""""""""""""""""""""""
+
+"""""""" F8 Autopep8 """"""""
+map <F8> :Autopep8<CR>
+
+"""""""" 按F5运行python """"""""
+map <F5> :w<CR> :call RunPython()<CR>
 function RunPython()
-    let mp = &makeprg
-    let ef = &errorformat
-    let exeFile = expand("%:t")
-    setlocal makeprg=python\ -u
-    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\%l%.%#,%Z%[%^\ ]%\\@=%m
-    silent make %
-    copen
-    let &makeprg = mp
-    let &errorformat = ef
+    if &filetype == 'python'
+        let mp = &makeprg
+        let ef = &errorformat
+        let exeFile = expand("%:t")
+        setlocal makeprg=python3\ -u
+        set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\%l%.%#,%Z%[%^\ ]%\\@=%m
+        silent make %
+        copen
+        let &makeprg = mp
+        let &errorformat = ef
+    endif
 endfunction
-
-"jedi-vim
-let g:jedi#auto_initialization = 0
-
+"""""""" 按F5运行python """"""""

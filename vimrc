@@ -58,7 +58,7 @@ set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
                     " separated by commas. Each item allows a way to backspace
                     " over something.
  
-set textwidth=79    " Maximum width of text that is being inserted. A longer
+"set textwidth=79    " Maximum width of text that is being inserted. A longer
                     " line will be broken after white space to get this width.
  
 set formatoptions=c,q,r,t " This is a sequence of letters which describes how
@@ -100,17 +100,50 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'              " vundle project
-Plugin 'Valloric/YouCompleteMe'         " auto complete
 Plugin 'tell-k/vim-autopep8'            " python autopep
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'Shougo/echodoc'
+Plugin 'Valloric/YouCompleteMe'         " auto complete
 
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 
+set noshowmode
+let g:echodoc_enable_at_startup=1 " 底部命令行显示函数参数
+
 " YouCompleteMe setting required
 let g:ycm_server_python_interpreter='/usr/bin/python'
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax=1 "语法关键字补全
+let g:ycm_show_diagnostics_ui=0 "关闭语法提示
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 标签补全引擎
+let g:ycm_complete_in_strings=1
+let g:ycm_complete_in_comments=1
+let g:ycm_semantic_triggers={
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \}
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt=0
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+let g:ycm_filetype_whitelist={
+            \ "c":1,
+            \ "cpp":1,
+            \ "cxx":1,
+            \ "h":1,
+            \ "hpp":1,
+            \ "objc":1,
+            \ "py":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ "zimbu":1,
+            \ }
+map <F2> :YcmCompleter GoToDefinition<CR>
+map <F3> :YcmCompleter GoToDeclaration<CR>
+map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " 简要帮助文档
 " :PluginList       - 列出所有已配置的插件
@@ -141,3 +174,4 @@ function RunPython()
     endif
 endfunction
 """""""" 按F5运行python """"""""
+

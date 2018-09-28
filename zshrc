@@ -101,3 +101,7 @@ source $ZSH/oh-my-zsh.sh
 . /usr/share/autojump/autojump.sh
 
 alias g++11="g++ -std=c++11"
+
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)

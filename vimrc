@@ -103,16 +103,21 @@ Plugin 'gmarik/Vundle.vim'              " vundle project
 Plugin 'tell-k/vim-autopep8'            " python autopep
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/echodoc'
+
+" if RAM is less than 1.5GB, can't use ycm
+" need to delet
 Plugin 'Valloric/YouCompleteMe'         " auto complete
 
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 
+" YouCompleteMe setting required
+" if RAM is less than 1.5GB, can't use ycm
+" need to delete
 set noshowmode
 let g:echodoc_enable_at_startup=1 " 底部命令行显示函数参数
 
-" YouCompleteMe setting required
 let g:ycm_server_python_interpreter='/usr/bin/python'
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax=1 "语法关键字补全
@@ -144,6 +149,7 @@ let g:ycm_filetype_whitelist={
 map <F2> :YcmCompleter GoToDefinition<CR>
 map <F3> :YcmCompleter GoToDeclaration<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 
 " 简要帮助文档
 " :PluginList       - 列出所有已配置的插件

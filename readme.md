@@ -19,3 +19,5 @@ tmux, aptitude, minicom, cmake, c++11, aria2, git, zsh, autojump, tofrodos
 [Use Flatabulous](https://www.jianshu.com/p/463f229c0a20)
 
 ## 一键部署脚本
+
+put the fonts you want to the directory `fonts`, then rerun the fonts part in the `gui_softwares.sh`.

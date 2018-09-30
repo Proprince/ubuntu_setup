@@ -1,5 +1,0 @@
-# im-config(8) generated on Mon, 16 Apr 2018 21:06:22 +0800
-run_im fcitx
-# im-config signature: 7e2160a622ec7bcc19f441f41d0636ff  -
-
-setxkbmap -option "ctrl:swapcaps"

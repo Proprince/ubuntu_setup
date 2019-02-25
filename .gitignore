@@ -1,3 +1,3 @@
-*.ttf
-*.ttc
-*.TTF
+fonts/*
+!fonts/.gitkeep
+!fonts/*.png

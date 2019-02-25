@@ -83,12 +83,23 @@ filetype plugin indent on
 syntax on
 
 """""""" 配色 """"""""
-set t_Co=256
-set background=dark " When set to "dark", Vim will try to use colors that look
+if $TERM =~ '^xterm' || $TERM =~ '^screen' || $TERM=~ '256color$'
+    set t_Co=256
+    set background=dark
+    colorscheme jellybeans
+elseif has('gui_running')
+    set background=light
+    colorscheme jellybeans
+else
+    colorscheme default
+endif
+hi Normal  ctermfg=252 ctermbg=none
+" set t_Co=256
+" set background=dark " When set to "dark", Vim will try to use colors that look
                     " good on a dark background. When set to "light", Vim will
                     " try to use colors that look good on a light background.
                     " Any other value is illegal.
-colorscheme jellybeans " downlaod <color>.vim in ~/.vim/colors/
+" colorscheme jellybeans " downlaod <color>.vim in ~/.vim/colors/
 """""""" 配色 """"""""
 
 """"""""""""""""""""" Vundle Setting """""""""""""""""""""""""
@@ -132,20 +143,23 @@ let g:ycm_semantic_triggers={
             \}
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt=0
+
+let g:ycm_python_binary_path='/usr/bin/python3'
+
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
-let g:ycm_filetype_whitelist={
-            \ "c":1,
-            \ "cpp":1,
-            \ "cxx":1,
-            \ "h":1,
-            \ "hpp":1,
-            \ "objc":1,
-            \ "py":1,
-            \ "sh":1,
-            \ "zsh":1,
-            \ "zimbu":1,
-            \ }
+"let g:ycm_filetype_whitelist={
+"            \ "c":1,
+"            \ "cpp":1,
+"            \ "cxx":1,
+"            \ "h":1,
+"            \ "hpp":1,
+"            \ "objc":1,
+"            \ "py":1,
+"            \ "sh":1,
+"            \ "zsh":1,
+"            \ "zimbu":1,
+"            \ }
 map <F2> :YcmCompleter GoToDefinition<CR>
 map <F3> :YcmCompleter GoToDeclaration<CR>
 map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>

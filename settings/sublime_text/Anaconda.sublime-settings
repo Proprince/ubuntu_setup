@@ -1,0 +1,15 @@
+{
+    "python_interpreter": "/usr/bin/python3.6", // Python 安装路径
+    "suppress_word_completions": true,
+    "suppress_explicit_completions": true,
+    "complete_parameters": false,
+    "anaconda_linting":false,
+
+    "swallow_startup_errors": true,
+    
+    "extra_paths": [
+        "/usr/lib/python2.7/dist-packages",
+        "/usr/lib/python3/dist-packages",
+        "/home/zrp/.local/lib/python3.6/site-packages"
+    ],
+}

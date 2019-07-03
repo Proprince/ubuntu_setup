@@ -94,6 +94,8 @@ else
     colorscheme default
 endif
 hi Normal  ctermfg=252 ctermbg=none
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
 " set t_Co=256
 " set background=dark " When set to "dark", Vim will try to use colors that look
                     " good on a dark background. When set to "light", Vim will
@@ -114,6 +116,10 @@ Plugin 'gmarik/Vundle.vim'              " vundle project
 Plugin 'tell-k/vim-autopep8'            " python autopep
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/echodoc'
+Plugin 'lervag/vimtex'
+Plugin 'sirver/ultisnips'
+Plugin 'keelii/vim-snippets'
+Plugin 'ervandew/supertab'
 
 " if RAM is less than 1.5GB, can't use ycm
 " need to delet
@@ -129,7 +135,17 @@ filetype plugin indent on    " required
 set noshowmode
 let g:echodoc_enable_at_startup=1 " 底部命令行显示函数参数
 
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+let g:ycm_server_python_interpreter='/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax=1 "语法关键字补全
 let g:ycm_show_diagnostics_ui=0 "关闭语法提示
@@ -195,3 +211,9 @@ function RunPython()
 endfunction
 """""""" 按F5运行python """"""""
 
+set runtimepath-=~/.vim/bundle/YouCompleteMe
+
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=python3 /home/zrp/Softwares/shadowsocksr/shadowsocks/local.py -c /etc/shadowsocks.json\n
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Shadowsocksr
+Name=Shadowsocksr
+Comment[en_US]=
+Comment=

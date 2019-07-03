@@ -1,0 +1,14 @@
+{
+    "language_settings": {
+        "Python": {
+            "python": "/usr/bin/python3.6",
+            "scan_extra_paths": [
+                "/usr/lib/python2.7/dist-packages",
+                "/usr/lib/python3/dist-packages",
+                "/home/zrp/.local/lib/python3.6/site-packages"
+            ],
+            "scan_files_in_project": true,
+            "selected_catalogs": [],
+        }
+    }
+}
